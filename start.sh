@@ -1,12 +1,8 @@
 #!/bin/bash
+set -e
 
-# Activate virtual environment if it exists (for Local/VPS)
-if [ -d ".venv" ]; then
-    source .venv/bin/activate
-fi
+echo "Starting bot..."
 
-# Run the update script to fetch the latest bot code from UPSTREAM_REPO
-python3 update.py
-
-# Start the bot
+# Do NOT run update.py on Heroku
+# Just start the bot and keep the worker alive
 python3 -m bot
